@@ -31,11 +31,18 @@ $(function() {
          * and that the URL is not empty.
          */
          it('each feed has a url defined and is not empty', function () {
+           /**
+            * @name testValidURL
+            * @description accepts feed item url value and runs expectations that it is defined and not empty
+            * @function
+            * @param {string} feedURL - feed item url
+            */
            var testValidURL = function(feedURL) {
              expect(feedURL).toBeDefined();
              expect(feedURL.length).toBeGreaterThan(0);
            };
 
+           //loops through feeds and invokes testValidURL function
            allFeeds.forEach(function(feed) {
              testValidURL(feed.url);
            });
@@ -46,13 +53,20 @@ $(function() {
          * and that the name is not empty.
          */
          it('each feed has a name defined and is not empty', function () {
-           var testValidURL = function(feedName) {
+           /**
+            * @name testValidFeedName
+            * @description accepts feed item name value and runs expectations that it is defined and not empty
+            * @function
+            * @param {string} feedName - feed item name
+            */
+           var testValidFeedName = function(feedName) {
              expect(feedName).toBeDefined();
              expect(feedName.length).toBeGreaterThan(0);
            };
 
+           //loops through feeds and invokes testValidFeedName function
            allFeeds.forEach(function(feed) {
-             testValidURL(feed.name);
+             testValidFeedName(feed.name);
            });
          });
     });
@@ -60,14 +74,19 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function () {
-
-      // http://jasmine.github.io/2.4/custom_matcher.html
+        /**
+         * created custom matcher 'toHaveClass' for menu tests below
+         * referenced jasmine tutorial http://jasmine.github.io/2.1/custom_matcher.html
+         * and using github user 'velesin' implementation https://github.com/velesin/jasmine-jquery/blob/master/lib/jasmine-jquery.js#L376-L383
+         */
         beforeEach(function() {
           jasmine.addMatchers({
             toHaveClass: function () {
               return {
                 compare: function (actual, className) {
-                  return { pass: $(actual).hasClass(className) };
+                  return {
+                    pass: $(actual).hasClass(className)
+                  };
                 }
               };
             }
@@ -91,6 +110,7 @@ $(function() {
           it('menu is visible when menu icon is clicked', function () {
             $('.menu-icon-link').click();
             expect($('body')).not.toHaveClass('menu-hidden');
+
             if ($('body').hasClass('')) {
               $('.menu-icon-link').click();
               expect($('body')).toHaveClass('menu-hidden');
@@ -100,7 +120,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function () {
-
+        // setting up all tests by running ajax request loadFeed
         beforeEach(function(done) {
           loadFeed(0, function() {
             done();
@@ -121,7 +141,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
-
+        // setting up all tests by running ajax request loadFeed
         beforeEach(function(done) {
           loadFeed(0, function() {
             done();
@@ -132,16 +152,95 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         it('New feed content actually changes', function (done) {
-           var self = this;
-           var initialFeedContent = $('.feed').html(),
-               secondFeedContent;
+        it('New feed content actually changes', function (done) {
+          var self = this;
+          var initialFeedContent = $('.feed').html(),
+              secondFeedContent;
 
-           loadFeed(1, function() {
-             self.secondFeedContent = $('.feed').html();
-             expect(self.secondFeedContent).not.toEqual(initialFeedContent);
-             done();
-           });
-         });
+          // running ajax requst loadFeed for new feed content
+          loadFeed(1, function() {
+            self.secondFeedContent = $('.feed').html();
+            expect(self.secondFeedContent).not.toEqual(initialFeedContent);
+            done();
+          });
+        });
+    });
+
+    describe('Favorites', function () {
+        // setting up all tests by running ajax request loadFeed
+        beforeEach(function(done) {
+          loadFeed(0, function() {
+            done();
+          });
+          jasmine.addMatchers({
+            toHaveClass: function () {
+              return {
+                compare: function (actual, className) {
+                  return {
+                    pass: $(actual).hasClass(className)
+                  };
+                }
+              };
+            }
+          });
+        });
+
+        /*
+         * TODO: Write a test that will ensure a feed item is added to a favorites list
+         */
+        it('add feed item to favorites', function () {
+          // $('.feed-item-fav-icon').click();
+          // feed.addToFavorites(thisFeedItem);
+          // expect($('article')).toHaveClass('fav-select');
+        });
+
+        /*
+         * TODO: Write a test that will ensure when a feed item is removed from a favorites list
+         */
+        it('remove feed item from favorites', function () {
+          // if ($('article').hasClass('fav-select')) {
+          //   $('.feed-item-fav-icon').click();
+          //   expect($('article')).not.toHaveClass('fav-select');
+          // }
+        });
+
+        /*
+         * TODO: Write a test that will ensure when all feed items in a favorites list are displayed
+         */
+        it('display favorites feeds list', function () {
+          // $('.feed-item-fav-icon').click();
+          // feed.addToFavorites(thisFeedItem);
+          // expect($('feed').children()).toHaveClass('fav-select');
+        });
+    });
+
+    describe('Categorize Feed Items', function () {
+        // setting up all tests by running ajax request loadFeed
+        beforeEach(function(done) {
+          loadFeed(0, function() {
+            done();
+          });
+        });
+
+        /*
+         * TODO: Write a test that will ensure when a category is added to a feed item
+         */
+        it('add a category to a feed item', function () {
+
+        });
+
+        /*
+         * TODO: Write a test that will ensure when an existing category is changed on a feed item
+         */
+        it('change a category on a feed item', function () {
+
+        });
+
+        /*
+         * TODO: Write a test that will ensure when a category is removed from a feed item
+         */
+        it('remove category on a feed item', function () {
+
+        });
     });
 }());
