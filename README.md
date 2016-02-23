@@ -10,6 +10,7 @@ A [live demo of the app test results can be found here](http://arosa81.github.io
 1. Check out the repository
 2. Open the index.html file in your web browser
 3. Scroll to the bottom of the page to see test results
+4. To run additional tests (below), uncomment out expectations code in feadreader.js file, save changes, and refresh web page
 
 ## Additional Tests for Future Functionality
 
