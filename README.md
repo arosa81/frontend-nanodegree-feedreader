@@ -15,8 +15,8 @@ A [live demo of the app test results can be found here](http://arosa81.github.io
 
 Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionality that has not been fully implemented. The expectations for them have been commented out, but includes code to adequately test these additional features. These tests include:
 
-##### 1. Test suite for *Favorites* feature
-  ###### 1. Spec: add feed item to favorites
+#####1. Test suite for *Favorites* feature
+######  1. Spec: add feed item to favorites
   ```javascript
   it('add feed item to favorites', function () {
     var self = this;
@@ -30,5 +30,23 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
     // expect($('article')).toHaveClass('fav-select-icon');
     // expect($('article')).not.toHaveClass('fav-unselect-icon');
+  });
+  ```
+
+#####1. Test suite for *Favorites* feature
+######  1. Spec: remove feed item from favorites
+  ```javascript
+  it('remove feed item from favorites', function () {
+    var self = this;
+    var targetURL;
+    $('.fav-select-icon').click(function(e) {
+      self.targetURL = $(e.target).parent().attr('href');
+      $(this).toggleClass('fav-unselect-icon fav-select-icon');
+    });
+
+    // deleteFeedFav(self.targetURL); //This function removes feed items from favorites list
+
+    // expect($('article')).toHaveClass('fav-unselect-icon');
+    // expect($('article')).not.toHaveClass('fav-select-icon');
   });
   ```
