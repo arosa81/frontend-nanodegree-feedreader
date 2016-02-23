@@ -17,7 +17,8 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
 1. Test suite for *Favorites* feature
   1. Spec: **add feed item to favorites**
-  *This test will ensure a feed item is added to a favorites list*
+
+   *This test will ensure a feed item is added to a favorites list*
   ```javascript
   it('add feed item to favorites', function () {
     var self = this;
@@ -35,7 +36,8 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
   ```
 
   1. Spec: **remove feed item from favorites**
-  *This test will ensure when a feed item is removed from a favorites list*
+
+   *This test will ensure when a feed item is removed from a favorites list*
   ```javascript
   it('remove feed item from favorites', function () {
     var self = this;
