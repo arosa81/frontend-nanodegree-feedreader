@@ -166,7 +166,7 @@ $(function() {
         });
     });
 
-    describe('Favorites', function () {
+    describe('Favorites--', function () {
         // setting up all tests by running ajax request loadFeed
         beforeEach(function(done) {
           loadFeed(0, function() {
@@ -189,32 +189,56 @@ $(function() {
          * TODO: Write a test that will ensure a feed item is added to a favorites list
          */
         it('add feed item to favorites', function () {
-          // $('.feed-item-fav-icon').click();
-          // feed.addToFavorites(thisFeedItem);
-          // expect($('article')).toHaveClass('fav-select');
+          var self = this;
+          var targetURL;
+          $('.fav-unselect-icon').click(function(e) {
+            targetURL = $(e.target).parent().attr('href');
+            $(this).toggleClass('fav-unselect-icon fav-select-icon');
+          });
+
+          addFeedFav(self.targetURL);
+
+          expect($('article')).toHaveClass('fav-select-icon');
+          expect($('article')).not.toHaveClass('fav-unselect-icon');
         });
 
         /*
          * TODO: Write a test that will ensure when a feed item is removed from a favorites list
          */
         it('remove feed item from favorites', function () {
-          // if ($('article').hasClass('fav-select')) {
-          //   $('.feed-item-fav-icon').click();
-          //   expect($('article')).not.toHaveClass('fav-select');
-          // }
+          var self = this;
+          var targetURL;
+          $('.fav-select-icon').click(function(e) {
+            self.targetURL = $(e.target).parent().attr('href');
+            $(this).toggleClass('fav-unselect-icon fav-select-icon');
+          });
+
+          deleteFeedFav(self.targetURL);
+
+          expect($('article')).toHaveClass('fav-unselect-icon');
+          expect($('article')).not.toHaveClass('fav-select-icon');
         });
 
         /*
          * TODO: Write a test that will ensure when all feed items in a favorites list are displayed
          */
         it('display favorites feeds list', function () {
-          // $('.feed-item-fav-icon').click();
-          // feed.addToFavorites(thisFeedItem);
-          // expect($('feed').children()).toHaveClass('fav-select');
+          var self = this;
+          var initialFeedContent = $('.feed').html(),
+              secondFeedContent;
+
+          $('.menu-fav-icon-link').click();
+          loadFavFeed();  //This function hides current feed and shows fav feed
+
+          expect(self.secondFeedContent).not.toEqual(initialFeedContent);
+
+          $('entry-link').each(function() {
+            expect($(this).hasClass('fav-select-icon')).toBeTruthy();
+          });
         });
     });
 
-    describe('Categorize Feed Items', function () {
+    describe('Categorize Feed Items--', function () {
         // setting up all tests by running ajax request loadFeed
         beforeEach(function(done) {
           loadFeed(0, function() {
@@ -226,13 +250,37 @@ $(function() {
          * TODO: Write a test that will ensure when a category is added to a feed item
          */
         it('add a category to a feed item', function () {
+          var self = this;
+          var category;
+          $('input').keyup(function() {
+            self.category = $(this).val();
+            $('.category-text').text(self.category);
+          }).keyup();
 
+          expect($('.category-text').text()).toBe(self.category);
         });
 
         /*
          * TODO: Write a test that will ensure when an existing category is changed on a feed item
          */
         it('change a category on a feed item', function () {
+          var self = this;
+          var category, initialCategory;
+
+          var testExpectation = function() {
+            // expect(self.initialCategory).not.toBe(self.category);
+          };
+
+          $('entry-link').each(function() {
+            self.initialCategory = $('.category-text').text();
+            $('input').keyup(function() {
+              self.category = $(this).val();
+              $('.category-text').text(self.category);
+            }).keyup();
+
+            // testExpectation();
+          });
+          expect(self.initialCategory).not.toBe(self.category);
 
         });
 
@@ -240,7 +288,14 @@ $(function() {
          * TODO: Write a test that will ensure when a category is removed from a feed item
          */
         it('remove category on a feed item', function () {
+          var self = this;
+          var category;
+          $('input').keyup(function() {
+            self.category = $(this).val();
+            $('.category-text').text(self.category);
+          }).keyup();
 
+          expect($('.category-text').text()).toBeNull();
         });
     });
 }());
