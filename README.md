@@ -15,8 +15,9 @@ A [live demo of the app test results can be found here](http://arosa81.github.io
 
 Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionality that has not been fully implemented. The expectations for them have been commented out, but includes code to adequately test these additional features. These tests include:
 
-#####1. Test suite for *Favorites* feature
-######  1. Spec: add feed item to favorites
+1. Test suite for *Favorites* feature
+  1. Spec: **add feed item to favorites**
+  *This test will ensure a feed item is added to a favorites list*
   ```javascript
   it('add feed item to favorites', function () {
     var self = this;
@@ -33,8 +34,8 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
   });
   ```
 
-#####1. Test suite for *Favorites* feature
-######  1. Spec: remove feed item from favorites
+  1. Spec: **remove feed item from favorites**
+  *This test will ensure when a feed item is removed from a favorites list*
   ```javascript
   it('remove feed item from favorites', function () {
     var self = this;
