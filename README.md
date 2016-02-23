@@ -53,3 +53,76 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
     // expect($('article')).not.toHaveClass('fav-select-icon');
   });
   ```
+
+  1. Spec: **display favorites feeds list**
+
+   *This test will ensure when all feed items in a favorites list are displayed*
+  ```javascript
+  it('display favorites feeds list', function () {
+    var self = this;
+    var initialFeedContent = $('.feed').html(),
+        secondFeedContent;
+
+    $('.menu-fav-icon-link').click();
+    // loadFavFeed();  //This function hides current feed and shows fav feed
+
+    // expect(self.secondFeedContent).not.toEqual(initialFeedContent);
+    //
+    // $('.entry-link').each(function() {
+    //   expect($(this).hasClass('fav-select-icon')).toBeTruthy();
+    // });
+  });
+  ```
+
+1. Test suite for *Categorize Feed Items* feature
+  1. Spec: **add a category to a feed item**
+
+   *This test will ensure when a category is added to a feed item*
+  ```javascript
+  it('add a category to a feed item', function () {
+    var self = this;
+    var category;
+    $('input').keyup(function() {
+      self.category = $(this).val();
+      $('.category-text').text(self.category);
+    }).keyup();
+
+    // expect($('.category-text').text()).toBe(self.category);
+  });
+  ```
+
+  1. Spec: **change a category on a feed item**
+
+   *This test that will ensure when an existing category is changed on a feed item*
+  ```javascript
+  it('change a category on a feed item', function () {
+    var self = this;
+    var initialCategory, newCategoryText;
+
+    $('.category-text').each(function(i, element) {
+      self.initialCategory = $(this).text();
+      $('input').keyup(function() {
+        self.newCategoryText = $(this).val();
+        $('.category-text').text(self.newCategoryText);
+      }).keyup();
+
+      // expect(this).not.toBe(self.newCategoryText);
+    });
+  });
+  ```
+
+  1. Spec: **remove category on a feed item**
+
+   *This test will ensure when a category is removed from a feed item*
+  ```javascript
+  it('remove category on a feed item', function () {
+    var self = this;
+    var category;
+    $('input').keyup(function() {
+      self.category = $(this).val();
+      $('.category-text').text(self.category);
+    }).keyup();
+
+    // expect($('.category-text').text()).toBeNull();
+  });
+  ```
