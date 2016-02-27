@@ -144,9 +144,7 @@ $(function() {
          * @param {function} anonymous function
          */
         beforeEach(function(done) {
-          loadFeed(0, function() {
-            done();
-          });
+          loadFeed(0, done);
         });
 
          /**
@@ -175,9 +173,7 @@ $(function() {
          * @param {function} anonymous function
          */
          beforeEach(function(done) {
-           loadFeed(0, function() {
-             done();
-           });
+           loadFeed(0, done);
          });
 
          /**
@@ -214,9 +210,7 @@ $(function() {
          * @param {function} anonymous function
          */
          beforeEach(function(done) {
-           loadFeed(0, function() {
-             done();
-           });
+           loadFeed(0, done);
 
           // custom matcher for jquery hasClass
           jasmine.addMatchers({
@@ -308,9 +302,7 @@ $(function() {
          * @param {function} anonymous function
          */
          beforeEach(function(done) {
-           loadFeed(0, function() {
-             done();
-           });
+           loadFeed(0, done);
          });
 
        /**
