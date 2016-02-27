@@ -232,7 +232,7 @@ $(function() {
          * @function
          * @param {function} anonymous function
          */
-        it('to add feed item to favorites', function () {
+        xit('to add feed item to favorites', function () {
           var self = this;
           var targetURL;
           $('.fav-unselect-icon').click(function(e) {
@@ -240,10 +240,10 @@ $(function() {
             $(this).toggleClass('fav-unselect-icon fav-select-icon');
           });
 
-          // addFeedFav(self.targetURL); //This function adds feed items to favorites list
+          addFeedFav(self.targetURL); //This function adds feed items to favorites list
 
-          // expect($('article')).toHaveClass('fav-select-icon');
-          // expect($('article')).not.toHaveClass('fav-unselect-icon');
+          expect($('article')).toHaveClass('fav-select-icon');
+          expect($('article')).not.toHaveClass('fav-unselect-icon');
         });
 
         /**
@@ -252,7 +252,7 @@ $(function() {
          * @function
          * @param {function} anonymous function
          */
-        it('to remove feed item from favorites', function () {
+        xit('to remove feed item from favorites', function () {
           var self = this;
           var targetURL;
           $('.fav-select-icon').click(function(e) {
@@ -260,10 +260,10 @@ $(function() {
             $(this).toggleClass('fav-unselect-icon fav-select-icon');
           });
 
-          // deleteFeedFav(self.targetURL); //This function removes feed items from favorites list
+          deleteFeedFav(self.targetURL); //This function removes feed items from favorites list
 
-          // expect($('article')).toHaveClass('fav-unselect-icon');
-          // expect($('article')).not.toHaveClass('fav-select-icon');
+          expect($('article')).toHaveClass('fav-unselect-icon');
+          expect($('article')).not.toHaveClass('fav-select-icon');
         });
 
         /**
@@ -272,19 +272,19 @@ $(function() {
          * @function
          * @param {function} anonymous function
          */
-        it('to display favorites feeds list', function () {
+        xit('to display favorites feeds list', function () {
           var self = this;
           var initialFeedContent = $('.feed').html(),
               secondFeedContent;
 
           $('.menu-fav-icon-link').click();
-          // loadFavFeed();  //This function hides current feed and shows fav feed
+          loadFavFeed();  //This function hides current feed and shows fav feed
 
-          // expect(self.secondFeedContent).not.toEqual(initialFeedContent);
-          //
-          // $('.entry-link').each(function() {
-          //   expect($(this).hasClass('fav-select-icon')).toBeTruthy();
-          // });
+          expect(self.secondFeedContent).not.toEqual(initialFeedContent);
+
+          $('.entry-link').each(function() {
+            expect($(this).hasClass('fav-select-icon')).toBeTruthy();
+          });
         });
     });
 
@@ -311,7 +311,7 @@ $(function() {
         * @function
         * @param {function} anonymous function
         */
-        it('to add a category to a feed item', function () {
+        xit('to add a category to a feed item', function () {
           var self = this;
           var category;
           $('input').keyup(function() {
@@ -319,7 +319,7 @@ $(function() {
             $('.category-text').text(self.category);
           }).keyup();
 
-          // expect($('.category-text').text()).toBe(self.category);
+          expect($('.category-text').text()).toBe(self.category);
         });
 
         /**
@@ -328,7 +328,7 @@ $(function() {
          * @function
          * @param {function} anonymous function
          */
-        it('to change a category on a feed item', function () {
+        xit('to change a category on a feed item', function () {
           var self = this;
           var initialCategory, newCategoryText;
 
@@ -339,7 +339,7 @@ $(function() {
               $('.category-text').text(self.newCategoryText);
             }).keyup();
 
-            // expect(this).not.toBe(self.newCategoryText);
+            expect(this).not.toBe(self.newCategoryText);
           });
         });
 
@@ -349,7 +349,7 @@ $(function() {
          * @function
          * @param {function} anonymous function
          */
-        it('to remove category on a feed item', function () {
+        xit('to remove category on a feed item', function () {
           var self = this;
           var category;
           $('input').keyup(function() {
@@ -357,7 +357,7 @@ $(function() {
             $('.category-text').text(self.category);
           }).keyup();
 
-          // expect($('.category-text').text()).toBeNull();
+          expect($('.category-text').text()).toBeNull();
         });
     });
 }());
