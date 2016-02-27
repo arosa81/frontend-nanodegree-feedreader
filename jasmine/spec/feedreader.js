@@ -30,7 +30,13 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('each feed has a url defined and is not empty', function () {
+         /**
+          * @name testValidURL
+          * @description accepts feed item url value and runs expectations that it is defined and not empty
+          * @function
+          * @param {string} feedURL - feed item url
+          */
+         it('each have a url defined and is not empty', function () {
            /**
             * @name testValidURL
             * @description accepts feed item url value and runs expectations that it is defined and not empty
@@ -52,7 +58,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('each feed has a name defined and is not empty', function () {
+         it('each have a name defined and is not empty', function () {
            /**
             * @name testValidFeedName
             * @description accepts feed item name value and runs expectations that it is defined and not empty
@@ -98,7 +104,7 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('menu element is hidden by default', function () {
+         it('element is hidden by default', function () {
            expect($('body')).toHaveClass('menu-hidden');
          });
 
@@ -107,7 +113,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('menu is visible when menu icon is clicked', function () {
+          it('is visible when the menu icon is clicked', function () {
             $('.menu-icon-link').click();
             expect($('body')).not.toHaveClass('menu-hidden');
 
@@ -152,7 +158,7 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('New feed content actually changes', function (done) {
+        it('content actually changes', function (done) {
           var self = this;
           var initialFeedContent = $('.feed').html(),
               secondFeedContent;
@@ -171,7 +177,7 @@ $(function() {
      * @description This test suite contains all specs for testing the favorites functionality.
      * @function
      */
-    describe('Favorites--', function () {
+    describe('Favorites Functionality', function () {
         // setting up all tests by running ajax request loadFeed
         beforeEach(function(done) {
           loadFeed(0, function() {
@@ -196,7 +202,7 @@ $(function() {
           * @description test that will ensure a feed item is added to a favorites list
           * @function
           */
-        it('add feed item to favorites', function () {
+        it('to add feed item to favorites', function () {
           var self = this;
           var targetURL;
           $('.fav-unselect-icon').click(function(e) {
@@ -215,7 +221,7 @@ $(function() {
           * @description test that will ensure when a feed item is removed from a favorites list
           * @function
           */
-        it('remove feed item from favorites', function () {
+        it('to remove feed item from favorites', function () {
           var self = this;
           var targetURL;
           $('.fav-select-icon').click(function(e) {
@@ -234,7 +240,7 @@ $(function() {
           * @description test that will ensure when all feed items in a favorites list are displayed
           * @function
           */
-        it('display favorites feeds list', function () {
+        it('to display favorites feeds list', function () {
           var self = this;
           var initialFeedContent = $('.feed').html(),
               secondFeedContent;
@@ -255,7 +261,7 @@ $(function() {
      * @description This test suite contains all specs for testing the categorize functionality.
      * @function
      */
-    describe('Categorize Feed Items--', function () {
+    describe('Categorize Feed Items Functionality', function () {
         // setting up all tests by running ajax request loadFeed
         beforeEach(function(done) {
           loadFeed(0, function() {
@@ -268,7 +274,7 @@ $(function() {
          * @description test that will ensure when a category is added to a feed item
          * @function
          */
-        it('add a category to a feed item', function () {
+        it('to add a category to a feed item', function () {
           var self = this;
           var category;
           $('input').keyup(function() {
@@ -284,7 +290,7 @@ $(function() {
           * @description test that will ensure when an existing category is changed on a feed item
           * @function
           */
-        it('change a category on a feed item', function () {
+        it('to change a category on a feed item', function () {
           var self = this;
           var initialCategory, newCategoryText;
 
@@ -304,7 +310,7 @@ $(function() {
           * @description test that will ensure when a category is removed from a feed item
           * @function
           */
-        it('remove category on a feed item', function () {
+        it('to remove category on a feed item', function () {
           var self = this;
           var category;
           $('input').keyup(function() {
