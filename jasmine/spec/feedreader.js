@@ -9,32 +9,29 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+    /**
+     * @name RSS Feeds
+     * @description test suite that contains a related set of tests. This suite is all about the RSS feeds definitions, the allFeeds variable in our application.
+     * @function
+     * @param {function} anonymous function
+     */
     describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
-         * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
-         */
+         /**
+          * @name are defined
+          * @description tests to make sure that the allFeeds variable has been defined and that it is not empty.
+          * @function
+          * @param {function} anonymous function
+          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
          /**
-          * @name testValidURL
-          * @description accepts feed item url value and runs expectations that it is defined and not empty
+          * @name each have a url defined and is not empty
+          * @description test that loops through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
           * @function
-          * @param {string} feedURL - feed item url
+          * @param {function} anonymous function
           */
          it('each have a url defined and is not empty', function () {
            /**
@@ -54,10 +51,12 @@ $(function() {
            });
          });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+         /**
+          * @name each have a name defined and is not empty
+          * @description test that loops through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
+          * @function
+          * @param {function} anonymous function
+          */
          it('each have a name defined and is not empty', function () {
            /**
             * @name testValidFeedName
@@ -77,14 +76,19 @@ $(function() {
          });
     });
 
-
-    /* TODO: Write a new test suite named "The menu" */
-    describe('The menu', function () {
-        /**
-         * created custom matcher 'toHaveClass' for menu tests below
-         * referenced jasmine tutorial http://jasmine.github.io/2.1/custom_matcher.html
-         * and using github user 'velesin' implementation https://github.com/velesin/jasmine-jquery/blob/master/lib/jasmine-jquery.js#L376-L383
-         */
+    /**
+     * @name The Menu
+     * @description test suite that contains a related set of tests. This suite is all about the menu in our application.
+     * @function
+     * @param {function} anonymous function
+     */
+    describe('The Menu', function () {
+         /**
+          * @name beforeEach
+          * @description custom matcher 'toHaveClass' for menu tests below referenced jasmine tutorial http://jasmine.github.io/2.1/custom_matcher.html and using github user 'velesin' implementation https://github.com/velesin/jasmine-jquery/blob/master/lib/jasmine-jquery.js#L376-L383
+          * @function
+          * @param {function} anonymous function
+          */
         beforeEach(function() {
           jasmine.addMatchers({
             toHaveClass: function () {
@@ -99,20 +103,22 @@ $(function() {
           });
         });
 
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+         /**
+          * @name element is hidden by default
+          * @description test that ensures the menu element is hidden by default.
+          * @function
+          * @param {function} anonymous function
+          */
          it('element is hidden by default', function () {
            expect($('body')).toHaveClass('menu-hidden');
          });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+          /**
+           * @name is visible when the menu icon is clicked
+           * @description test that ensures the menu changes visibility when the menu icon is clicked.
+           * @function
+           * @param {function} anonymous function
+           */
           it('is visible when the menu icon is clicked', function () {
             $('.menu-icon-link').click();
             expect($('body')).not.toHaveClass('menu-hidden');
@@ -124,40 +130,62 @@ $(function() {
           });
     });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+    /**
+     * @name Initial Entries
+     * @description test suite that contains a related set of tests. This suite is all about the initial entries in our application.
+     * @function
+     * @param {function} anonymous function
+     */
     describe('Initial Entries', function () {
-        // setting up all tests by running ajax request loadFeed
+        /**
+         * @name beforeEach
+         * @description set up function that runs the ajax request loadFeed
+         * @function
+         * @param {function} anonymous function
+         */
         beforeEach(function(done) {
           loadFeed(0, function() {
             done();
           });
         });
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+         /**
+          * @name loadFeed is called, completes, and has at leat a single .entry element
+          * @description test that ensures when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container.
+          * @function
+          * @param {function} anonymous function
+          */
          it('loadFeed is called, completes, and has at leat a single .entry element', function (done) {
            expect($('.feed').has('.entry').length).toBeGreaterThan(0);
            done();
          });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /**
+     * @name New Feed Selection
+     * @description test suite that contains a related set of tests. This suite is all about loading new feed entries in our application.
+     * @function
+     * @param {function} anonymous function
+     */
     describe('New Feed Selection', function () {
-        // setting up all tests by running ajax request loadFeed
-        beforeEach(function(done) {
-          loadFeed(0, function() {
-            done();
-          });
-        });
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
+        /**
+         * @name beforeEach
+         * @description set up function that runs the ajax request loadFeed
+         * @function
+         * @param {function} anonymous function
          */
+         beforeEach(function(done) {
+           loadFeed(0, function() {
+             done();
+           });
+         });
+
+         /**
+          * @name content actually changes
+          * @description test that ensures when a new feed is loaded by the loadFeed function that the content actually changes.
+          * @function
+          * @param {function} anonymous function
+          */
         it('content actually changes', function (done) {
           var self = this;
           var initialFeedContent = $('.feed').html(),
@@ -172,17 +200,24 @@ $(function() {
         });
     });
 
-    /**
-     * @name Favorites--
-     * @description This test suite contains all specs for testing the favorites functionality.
-     * @function
-     */
+     /**
+      * @name Favorites Functionality
+      * @description test suite that contains a related set of tests. This suite is all about testing the favorites functionality.
+      * @function
+      * @param {function} anonymous function
+      */
     describe('Favorites Functionality', function () {
-        // setting up all tests by running ajax request loadFeed
-        beforeEach(function(done) {
-          loadFeed(0, function() {
-            done();
-          });
+        /**
+         * @name beforeEach
+         * @description set up function that runs the ajax request loadFeed and sets up a custom matcher for jquery hasClass testing.
+         * @function
+         * @param {function} anonymous function
+         */
+         beforeEach(function(done) {
+           loadFeed(0, function() {
+             done();
+           });
+
           // custom matcher for jquery hasClass
           jasmine.addMatchers({
             toHaveClass: function () {
@@ -198,10 +233,11 @@ $(function() {
         });
 
         /**
-          * @name add feed item to favorites
-          * @description test that will ensure a feed item is added to a favorites list
-          * @function
-          */
+         * @name to add feed item to favorites
+         * @description test that will ensure a feed item is added to a favorites list.
+         * @function
+         * @param {function} anonymous function
+         */
         it('to add feed item to favorites', function () {
           var self = this;
           var targetURL;
@@ -217,10 +253,11 @@ $(function() {
         });
 
         /**
-          * @name remove feed item from favorites
-          * @description test that will ensure when a feed item is removed from a favorites list
-          * @function
-          */
+         * @name to remove feed item from favorites
+         * @description test that will ensure when a feed item is removed from a favorites list
+         * @function
+         * @param {function} anonymous function
+         */
         it('to remove feed item from favorites', function () {
           var self = this;
           var targetURL;
@@ -236,10 +273,11 @@ $(function() {
         });
 
         /**
-          * @name display favorites feeds list
-          * @description test that will ensure when all feed items in a favorites list are displayed
-          * @function
-          */
+         * @name to display favorites feeds list
+         * @description test that will ensure when all feed items in a favorites list are displayed
+         * @function
+         * @param {function} anonymous function
+         */
         it('to display favorites feeds list', function () {
           var self = this;
           var initialFeedContent = $('.feed').html(),
@@ -256,24 +294,31 @@ $(function() {
         });
     });
 
-    /**
-     * @name Categorize Feed Items--
-     * @description This test suite contains all specs for testing the categorize functionality.
-     * @function
-     */
+   /**
+    * @name Categorize Feed Items Functionality
+    * @description test suite that contains a related set of tests. This suite is all about testing the categorize functionality.
+    * @function
+    * @param {function} anonymous function
+    */
     describe('Categorize Feed Items Functionality', function () {
-        // setting up all tests by running ajax request loadFeed
-        beforeEach(function(done) {
-          loadFeed(0, function() {
-            done();
-          });
-        });
-
         /**
-         * @name add a category to a feed item
-         * @description test that will ensure when a category is added to a feed item
+         * @name beforeEach
+         * @description set up function that runs the ajax request loadFeed
          * @function
+         * @param {function} anonymous function
          */
+         beforeEach(function(done) {
+           loadFeed(0, function() {
+             done();
+           });
+         });
+
+       /**
+        * @name to add a category to a feed item
+        * @description test that will ensure when a category is added to a feed item
+        * @function
+        * @param {function} anonymous function
+        */
         it('to add a category to a feed item', function () {
           var self = this;
           var category;
@@ -286,10 +331,11 @@ $(function() {
         });
 
         /**
-          * @name change a category on a feed item
-          * @description test that will ensure when an existing category is changed on a feed item
-          * @function
-          */
+         * @name to change a category on a feed item
+         * @description test that will ensure when an existing category is changed on a feed item
+         * @function
+         * @param {function} anonymous function
+         */
         it('to change a category on a feed item', function () {
           var self = this;
           var initialCategory, newCategoryText;
@@ -306,10 +352,11 @@ $(function() {
         });
 
         /**
-          * @name remove category on a feed item
-          * @description test that will ensure when a category is removed from a feed item
-          * @function
-          */
+         * @name to remove category on a feed item
+         * @description test that will ensure when a category is removed from a feed item
+         * @function
+         * @param {function} anonymous function
+         */
         it('to remove category on a feed item', function () {
           var self = this;
           var category;
