@@ -21,7 +21,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
    *This test will ensure a feed item is added to a favorites list*
   ```javascript
-  it('add feed item to favorites', function () {
+  xit('to add feed item to favorites', function () {
     var self = this;
     var targetURL;
     $('.fav-unselect-icon').click(function(e) {
@@ -29,10 +29,10 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
       $(this).toggleClass('fav-unselect-icon fav-select-icon');
     });
 
-    // addFeedFav(self.targetURL); //This function adds feed items to favorites list
+    addFeedFav(self.targetURL); //This function adds feed items to favorites list
 
-    // expect($('article')).toHaveClass('fav-select-icon');
-    // expect($('article')).not.toHaveClass('fav-unselect-icon');
+    expect($('article')).toHaveClass('fav-select-icon');
+    expect($('article')).not.toHaveClass('fav-unselect-icon');
   });
   ```
 
@@ -40,7 +40,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
    *This test will ensure when a feed item is removed from a favorites list*
   ```javascript
-  it('remove feed item from favorites', function () {
+  xit('to remove feed item from favorites', function () {
     var self = this;
     var targetURL;
     $('.fav-select-icon').click(function(e) {
@@ -48,10 +48,10 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
       $(this).toggleClass('fav-unselect-icon fav-select-icon');
     });
 
-    // deleteFeedFav(self.targetURL); //This function removes feed items from favorites list
+    deleteFeedFav(self.targetURL); //This function removes feed items from favorites list
 
-    // expect($('article')).toHaveClass('fav-unselect-icon');
-    // expect($('article')).not.toHaveClass('fav-select-icon');
+    expect($('article')).toHaveClass('fav-unselect-icon');
+    expect($('article')).not.toHaveClass('fav-select-icon');
   });
   ```
 
@@ -59,19 +59,19 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
    *This test will ensure when all feed items in a favorites list are displayed*
   ```javascript
-  it('display favorites feeds list', function () {
+  xit('to display favorites feeds list', function () {
     var self = this;
     var initialFeedContent = $('.feed').html(),
         secondFeedContent;
 
     $('.menu-fav-icon-link').click();
-    // loadFavFeed();  //This function hides current feed and shows fav feed
+    loadFavFeed();  //This function hides current feed and shows fav feed
 
-    // expect(self.secondFeedContent).not.toEqual(initialFeedContent);
-    //
-    // $('.entry-link').each(function() {
-    //   expect($(this).hasClass('fav-select-icon')).toBeTruthy();
-    // });
+    expect(self.secondFeedContent).not.toEqual(initialFeedContent);
+
+    $('.entry-link').each(function() {
+      expect($(this).hasClass('fav-select-icon')).toBeTruthy();
+    });
   });
   ```
 
@@ -80,7 +80,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
    *This test will ensure when a category is added to a feed item*
   ```javascript
-  it('add a category to a feed item', function () {
+  xit('to add a category to a feed item', function () {
     var self = this;
     var category;
     $('input').keyup(function() {
@@ -88,7 +88,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
       $('.category-text').text(self.category);
     }).keyup();
 
-    // expect($('.category-text').text()).toBe(self.category);
+    expect($('.category-text').text()).toBe(self.category);
   });
   ```
 
@@ -96,7 +96,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
    *This test that will ensure when an existing category is changed on a feed item*
   ```javascript
-  it('change a category on a feed item', function () {
+  xit('to change a category on a feed item', function () {
     var self = this;
     var initialCategory, newCategoryText;
 
@@ -107,7 +107,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
         $('.category-text').text(self.newCategoryText);
       }).keyup();
 
-      // expect(this).not.toBe(self.newCategoryText);
+      expect(this).not.toBe(self.newCategoryText);
     });
   });
   ```
@@ -116,7 +116,7 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
 
    *This test will ensure when a category is removed from a feed item*
   ```javascript
-  it('remove category on a feed item', function () {
+  xit('to remove category on a feed item', function () {
     var self = this;
     var category;
     $('input').keyup(function() {
@@ -124,6 +124,6 @@ Specs starting with *SPEC HAS NO EXPECTATIONS* is testing for future functionali
       $('.category-text').text(self.category);
     }).keyup();
 
-    // expect($('.category-text').text()).toBeNull();
+    expect($('.category-text').text()).toBeNull();
   });
   ```
